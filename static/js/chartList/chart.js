@@ -209,7 +209,9 @@ function areaChart(data,xName,yName,lineName,ele){
 	chart = new Highcharts.Chart({
         chart: {
             type: 'areaspline',
-			renderTo:ele
+			renderTo:ele,
+            //背景透明
+            backgroundColor: 'rgba(0,0,0,0)'
         },
         title: {
             text: ''
@@ -239,6 +241,12 @@ function areaChart(data,xName,yName,lineName,ele){
                 to: 6.5,
                 color: 'rgba(68, 170, 213, .2)'
             }]*/
+            labels: {
+                style: {
+                    color: 'black',
+                    fontSize:'10px'
+                }
+            }
         },
         yAxis: {
             title: {

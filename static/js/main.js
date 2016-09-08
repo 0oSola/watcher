@@ -28,7 +28,7 @@ jQuery(document).ready(function($){
 			(filter_tab_placeholder_default_value == filter_tab_placeholder.text()) ? filter_tab_placeholder.text(filter_tab_placeholder_text) : filter_tab_placeholder.text(filter_tab_placeholder_default_value) ;
 			$('.cd-tab-filter').toggleClass('is-open');
 
-		//check if user has clicked a filter already selected 
+		//check if user has clicked a filter already selected  
 		} else if( filter_tab_placeholder.data('type') == selected_filter ) {
 			filter_tab_placeholder.text($(event.target).text());
 			$('.cd-tab-filter').removeClass('is-open');	
