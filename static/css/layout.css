@@ -5,8 +5,15 @@ body{
 .box{
 	float:left;
 	background: url(../static/images/img-1.jpg);
-	background: #eee;
+	background: #fff;
 	width:100%;
 	height: 200px;
 	display: block;
+}
+
+
+.highcharts-xaxis-labels text{
+	/* width: 800px!important;
+	margin-right: 300px;
+	-webkit-transform:scale(0.85) translate(25px, 25px); */
 }

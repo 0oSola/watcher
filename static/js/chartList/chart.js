@@ -243,8 +243,9 @@ function areaChart(data,xName,yName,lineName,ele){
             }]*/
             labels: {
                 style: {
-                    color: 'black',
-                    fontSize:'10px'
+                    'color': 'black',
+                    '-webkit-text-size-adjust':'none',
+                    'font-size':'8px'
                 }
             }
         },
