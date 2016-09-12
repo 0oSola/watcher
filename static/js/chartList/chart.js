@@ -4,7 +4,7 @@ var colorLine = ["#3182bd","#6baed6", "#9ecae1", "#c6dbef", "#e6550d", "#fd8d3c"
 
 var colorLine2 = ["#14ADC4","#7cb5ec","#e55555","#3182bd","#6baed6", "#9ecae1", "#c6dbef", "#e6550d", "#fd8d3c", "#fdae6b", "#fdd0a2", "#31a354", "#74c476", "#a1d99b", "#c7e9c0", "#756bb1", "#9e9ac8", "#bcbddc", "#dadaeb", "#636363", "#969696", "#bdbdbd", "#d9d9d9"];
 
-
+var colorLine3 = ['#cf2257','#fea643','#2ca4a8','#435a74'];
 /*map*/
 function mapChart(ele,jsonData){
 	$.get('../static/js/echart/json/china.json', function (geoJson) {
@@ -220,14 +220,16 @@ function areaChart(data,xName,yName,lineName,ele){
             layout: 'vertical',
             align: 'left',
             verticalAlign: 'top',
-            x: 150,
-            y: 100,
+            x: 210,
+            y: 0,
             floating: true,
             borderWidth: 1,
             backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
         },
         xAxis: {
-            categories: xName/*[
+            visible:false,
+            categories: xName,
+            /*[
                 'Monday',
                 'Tuesday',
                 'Wednesday',
@@ -235,7 +237,7 @@ function areaChart(data,xName,yName,lineName,ele){
                 'Friday',
                 'Saturday',
                 'Sunday'
-            ]*/,
+            ],*/
             /*plotBands: [{ // visualize the weekend
                 from: 4.5,
                 to: 6.5,
@@ -250,8 +252,9 @@ function areaChart(data,xName,yName,lineName,ele){
             }
         },
         yAxis: {
+            //visible:false,
             title: {
-                text:yName
+                text:''//yName
             }
         },
         tooltip: {
