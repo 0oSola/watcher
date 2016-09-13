@@ -22,11 +22,13 @@ body {
   font-size: 1.6rem;
   font-family: "Open Sans", sans-serif;
   color: #331d35;
+  color: #C55B57;
   background-color: #e7e7e7;
 }
 
 a {
   color: #41307c;
+  color: #C55B57;
   text-decoration: none;
 }
 
@@ -230,12 +232,16 @@ xtab-filter
   }
   .no-touch .cd-tab-filter a:hover {
     color: #41307c;
+    color: #C55B57;
+
   }
   .cd-tab-filter a.selected {
     background: transparent;
     color: #41307c;
+    color: #C55B57;
     /* create border bottom using box-shadow property */
     box-shadow: inset 0 -2px 0 #41307c;
+    box-shadow: inset 0 -2px 0 #C55B57;
   }
   .cd-tab-filter.is-open ul li {
     display: inline-block;
