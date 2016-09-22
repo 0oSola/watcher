@@ -11,7 +11,7 @@
 <body ng-app="watcher">
 
 	<main class="cd-main-content">
-		<div class="cd-tab-filter-wrapper">
+		<div class="cd-tab-filter-wrapper banner-box">
 			<div class="cd-tab-filter">
 				<ul class="cd-filters">
 					<li class="placeholder"> 
@@ -30,29 +30,73 @@
 					<div class="box" box>
 						<div class="detail" detail>
 							<div class="title">标题</div>
-							<div class="date">2016.09.14</div>
-							<div class="msg-box">
-								<div class="ins-box">35%</div>
-								<div class="ins-detail">testtesttesttesttesttesttesttesttesttesttest</div>
-							</div>
+							<div class="little-title">2016.09.14</div>
 						</div>
-						<div class="chart-box" id="box_1" chart-box></div>
+						<div class="left-double-box">
+							<div class="main-msg">
+								<p class="msg-title">峰值（个）</p>
+								<p class="NumFont s-size">12,000</p>
+							</div>
+							<div class="chart-box" id="box_1" column-box></div>
+						</div>
+						
 					</div>
 				</li>
 				<li class="mix type-2 check2 radio2 option2">
-					<div class="box yData-box" box>
+					<div class="box bar-box" box>
 						<div class="detail" detail>
-							<div class="title">web增量</div>
-							<div class="add">+3,000</div>
-							<div class="date">2016.09.14</div>
-							
+							<div class="title">在线时长</div>
+							<div class="little-title">ONLINE TIMES</div>
 						</div>
-						<div class="chart-box data-box" id="box_2" wdata-box></div>
+						<div class="main-msg">
+							<span class="msg-title">时间（秒）</span>
+							<span class="NumFont m-size">12,000</span>
+						</div>
+
+						<div class="chart-box data-box no-axias" id="box_2" data-color="bo" spline-box></div>
 					</div>
 				</li>
 				<li class="mix type-1 check3 radio3 option1">
-					<div class="box">
-						box
+					<div class="box bar-box" box>
+						<div class="detail" detail>
+							<div class="title">在线时长</div>
+							<div class="little-title">ONLINE TIMES</div>
+						</div>
+						<div class="main-msg">
+							<span class="msg-title">峰值（个）</span>
+							<span class="NumFont m-size">12,000</span>
+						</div>
+						<div class="chart-box data-box no-axias column-box small-box" id="box_3" column-single-box></div>
+					</div>
+				</li>
+				<li class="mix type-1 check3 radio2 option4">
+					<div class="box bar-box" box>
+						<div class="detail" detail>
+							<div class="title">在线时长</div>
+							<div class="little-title">ONLINE TIMES</div>
+						</div>
+						<div class="main-msg">
+							<span class="msg-title">时间（秒）</span>
+							<span class="NumFont m-size">12,000</span>
+						</div>
+
+						<div class="chart-box data-box no-axias" id="box_4" data-color="rg" spline-box></div>
+					</div>
+				</li>
+				<li class="mix type-1 check3 radio2 option1">
+					<div class="box" box>
+						<div class="detail" detail>
+							<div class="title">标题</div>
+							<div class="little-title">2016.09.14</div>
+						</div>
+						<div class="right-double-box">
+							<div class="main-msg">
+								<p class="msg-title">峰值（个）</p>
+								<p class="NumFont s-size">12,000</p>
+							</div>
+							<div class="chart-box" id="box_5" pie-box></div>
+						</div>
+						
 					</div>
 				</li>
 				<li class="mix type-1 check3 radio2 option4">
@@ -67,17 +111,7 @@
 				</li>
 				<li class="mix type-1 check3 radio2 option4">
 					<div class="box">
-						box
-					</div>
-				</li>
-				<li class="mix type-1 check3 radio3 option1">
-					<div class="box">
-						box
-					</div>
-				</li>
-				<li class="mix type-1 check3 radio2 option4">
-					<div class="box">
-						box
+						box                                                 
 					</div>
 				</li>
 				<!-- <li class="mix type-1 check1 radio3 option2"><img src="../static/images/img-5.jpg" alt="Image 5"></li>
@@ -177,6 +211,7 @@
 <script type="text/javascript" src="../static/dist/mixitup/jquery.mixitup.min.js"></script>
 <script type="text/javascript" src="../static/dist/highchart/highcharts.js"></script>
 <script type="text/javascript" src="../static/js/chartList/chart.js"></script>
+<script type="text/javascript" src="../static/js/chartList/noborderChart.js"></script>
 <script type="text/javascript" src="../static/js/app.js"></script>
 <script type="text/javascript" src="../static/js/main.js"></script>
 

@@ -196,91 +196,6 @@ function barChart(data,xName,yName,lineName,ele){
 	return chart;
 }
 
-/*area chart*/
-function exampleAreaChart(data,xName,yName,lineName,ele){
-    var chart = "";
-    var seriesList = [];
-    for(var i=0;i<data.length;i++){
-        var item = {
-            data:data[i],
-            color:'rgba(255,255,255,0.6)',
-            name:lineName[i]
-        }
-        seriesList.push(item);
-    }
-    chart = new Highcharts.Chart({
-        chart: {
-            type: 'areaspline',
-            renderTo:ele,
-            //背景透明
-            backgroundColor: 'rgba(0,0,0,0)'
-            //backgroundColor:'#ffa734'
-        },
-        title: {
-            text: ''
-        },
-        legend: {
-            //隐藏 legend
-            enabled: false,
-            layout: 'vertical',
-            align: 'left',
-            verticalAlign: 'top',
-            x: 20,
-            y: 0,
-            floating: true,
-            borderWidth: 1,
-            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
-        },
-        xAxis: {
-            visible:false,
-            categories: xName,
-            /*[
-                'Monday',
-                'Tuesday',
-                'Wednesday',
-                'Thursday',
-                'Friday',
-                'Saturday',
-                'Sunday'
-            ],*/
-            /*plotBands: [{ // visualize the weekend
-                from: 4.5,
-                to: 6.5,
-                color: 'rgba(68, 170, 213, .2)'
-            }]*/
-            labels: {
-                visible:false,
-                style: {
-                    'color': 'black',
-                    '-webkit-text-size-adjust':'none',
-                    'font-size':'8px'
-                }
-            }
-        },
-        yAxis: {
-            visible:false,
-            title: {
-                text:''//yName
-            }
-        },
-        tooltip: {
-            enabled: false,
-            shared: true,
-            valueSuffix: ' '
-        },
-        credits: {
-            enabled: false
-        },
-        plotOptions: {
-            areaspline: {
-                fillOpacity: 0.5
-            }
-        },
-        series: seriesList
-    });
-    return chart;
-}
-
 
 /*area chart*/
 function areaChart(data,xName,yName,lineName,ele){
@@ -292,6 +207,7 @@ function areaChart(data,xName,yName,lineName,ele){
 			color:colorLine2[i],
 			name:lineName[i]
 		}
+        
 		seriesList.push(item);
 	}
 	chart = new Highcharts.Chart({
