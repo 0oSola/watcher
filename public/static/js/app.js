@@ -1,16 +1,16 @@
 (function(){
-	var app = angular.module("watcher",[]);
+	var app = angular.module('watcher',['loading']);
 
-	app.controller("boxController",function(){
+	app.controller('boxController',function(){
 
 	})
 
-	app.directive("boxList",function(){
+	app.directive('boxList',function(){
 		return {
-			restrict:"A",
+			restrict:'A',
 			scope:{},
 			link:function($scope,$ele,$attrs){
-				$ele.find("ul").mixItUp({
+				$ele.find('ul').mixItUp({
 				    controls: {
 				    	enable: false
 				    },
@@ -27,40 +27,41 @@
 		}
 	})
 
-	app.directive("box",function(){
+	app.directive('box',function(){
 		return {
-			restrict:"EA",
+			restrict:'EA',
 			scope:{},
-			controller:["$scope","$http",function($scope,$http){
+			require:'^?boxList',
+			controller:['$scope','$http',function($scope,$http){
 				this.request = function(){
 					return $http({
-						url:"/getData",
-						method:"POST",
+						url:'/getData',
+						method:'POST',
 						data:{
-							type:"10"
+							type:'10'
 						}
 					})
 				};
 				this.requestSingle = function(){
 					return $http({
-						url:"/getData1",
-						method:"POST",
+						url:'/getData1',
+						method:'POST',
 						data:{
-							type:"20"
+							type:'20'
 						}
 					})
 				};
 				this.builder = {
 					//加载图表
 					buildChart:function(target_id,chartType,chart_data,x_name,y_name,chartname){
-						if(chartType == "area"){
+						if(chartType == 'area'){
 							chartEg = exampleAreaChart(chart_data,x_name,y_name,chartname,target_id); 
 							chartEg = areaChart(chart_data,x_name,y_name,chartname,target_id);
-						}else if(chartType == "bar"){
+						}else if(chartType == 'bar'){
 							chartEg = barChart(chart_data,x_name,y_name,chartname,target_id);
-						}else if(chartType == "column"){
+						}else if(chartType == 'column'){
 							chartEg = column2Chart(chart_data,x_name,y_name,chartname,target_id);
-						}else if(chartType == "pieChart"){
+						}else if(chartType == 'pieChart'){
 							if(x_name.length!=0){
 								chartEg = pieChart(chart_data,x_name,chartname,target_id);
 							}else{
@@ -78,93 +79,109 @@
 					}
 				}
 			}],
-			require:"^?boxList",
+			
 		}
 	})
-
-	app.directive('detail', [function () {
-		return {
-			restrict: 'A',
-			require:"?^box",
-			link: function (scope, iElement, iAttrs) {
-				iElement.html();
-			}
-		};
-	}])
 	
-	app.directive('splineBox',[function(){
+	app.directive('splineBox',['$timeout',function($timeout){
 		return{
-			restrict:"A",
+			restrict:'A',
 			scope:true,
-			require:"?^box",
+			require:'?^box',
 			link:function(scope, iElement, iAttrs,pctrl){
-
-				setTimeout(function() {
+				$timeout(function() {
 					pctrl.request().then(function successCallback(response){
+						var id = iElement.find(".chart-box").attr("id");
+						iElement.find(".loading").css("display","none");
 						var data = response.data.data;
 						data = angular.fromJson(data);
 						var colorChart = 'redgreensplineChart';
-						if(iAttrs.color=="bo"){
+						if(iAttrs.color=='bo'){
 							colorChart = 'blueorangesplineChart';
 						}
-						pctrl.builder.buildChart(iAttrs.id,colorChart,data.chart_data,data.x_name,data.y_name,data.chart_name);
+						pctrl.builder.buildChart(id,colorChart,data.chart_data,data.x_name,data.y_name,data.chart_name);
 
 					},function errorCallBack(response){
 
 					})
-				}, 200);
+				}, 1000);
 			}
 		}
 	}])
-	app.directive('columnBox', [function () {
+	app.directive('columnBox', ['$timeout',function ($timeout) {
 		return {
 			restrict: 'A',
 			scope:true,
-			require:"?^box",
+			require:'?^box',
 			link: function (scope, iElement, iAttrs,pctrl) {
-
-				setTimeout(function() {
+				
+				$timeout(function() {
 					pctrl.requestSingle().then(function successCallback(response){
+						var id = iElement.find(".chart-box").attr("id");
+						iElement.find(".loading").css("display","none");
 						var data = response.data.data;
 						data = angular.fromJson(data);
-						pctrl.builder.buildChart(iAttrs.id,"bluecolumnChart",data.chart_data,data.x_name,data.y_name,data.chart_name);
+						pctrl.builder.buildChart(id,'bluecolumnChart',data.chart_data,data.x_name,data.y_name,data.chart_name);
 					},function errorCallBack(response){
 
 					})
-				}, 200);
+				}, 1000);
 				
 			}
 		};
 	}])
-	app.directive('columnSingleBox', [function () {
+	app.directive('columnSingleBox', ['$timeout',function ($timeout) {
 		return {
 			restrict: 'A',
-			require:"^?box",
+			require:'?^box',
 			scope:true,
 			link: function (scope, iElement, iAttrs,pctrl) {
-				pctrl.requestSingle().then(function successCallback(response){
-					var data = response.data.data;
-					data = angular.fromJson(data);
-					pctrl.builder.buildChart(iAttrs.id,"greencolumnChart",data.chart_data,data.x_name,data.y_name,data.chart_name);
-				},function errorcallback(response){
+				$timeout(function(){
+					pctrl.requestSingle().then(function successCallback(response){
+						var id = iElement.find(".chart-box").attr("id");
+						iElement.find(".loading").css("display","none");
+						var data = response.data.data;
+						data = angular.fromJson(data);
+						pctrl.builder.buildChart(id,'greencolumnChart',data.chart_data,data.x_name,data.y_name,data.chart_name);
+					},function errorcallback(response){
 
-				})
+					})
+				},1000)
 			}
 		};
 	}])
 
-	app.directive('pieBox', [function () {
+	app.directive('pieBox', ['$timeout',function ($timeout) {
 		return {
 			restrict: 'A',
-			require:'^?box',
+			require:'?^box',
 			scope:true,
 			link: function (scope, iElement, iAttrs,pctrl) {
-				pctrl.request().then(function successCallback(response){
-					var data = angular.fromJson(response.data.data);
-					pctrl.builder.buildChart(iAttrs.id,'pieChart',data.chart_data,data.x_name,data.y_name,data.chart_name);
-				},function errorCallback(){
+				$timeout(function(){
+					var id = iElement.find(".chart-box").attr("id");
+					iElement.find(".loading").css("display","none");
+					pctrl.request().then(function successCallback(response){
+						var data = angular.fromJson(response.data.data);
+						pctrl.builder.buildChart(id,'pieChart',data.chart_data,data.x_name,data.y_name,data.chart_name);
+					},function errorCallback(){
 
-				})
+					})
+				},1000)
+			}
+		};
+	}])
+
+	app.directive('loadingBox', ['$timeout',function ($timeout) {
+		return {
+			restrict: 'A',
+			require:'?^box',
+			scope:true,
+			link: function (scope, iElement, iAttrs,pctrl) {
+				$timeout(function() {
+					var id = iElement.find(".chart-box").attr("id");
+					iElement.find(".loading").css("display","none");
+					iElement.find('.animation-bar').addClass('animation');
+				}, 1000);
 			}
 		};
 	}])

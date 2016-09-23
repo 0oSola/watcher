@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>watcher</title>
 	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../static/dist/font-awesome-4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../static/dist/css-loading/circle.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/layout.css">
 	<script type="text/javascript" src="../static/dist/modernizr/modernizr.js"></script> <!-- Modernizr -->
 </head>
@@ -26,92 +28,141 @@
 
 		<section class="cd-gallery" box-list>
 			<ul>
+
+				<li class="mix type-1 type-2 check1 radio2 option3">
+					<div class="box clock-box" box>
+						<div class="main-box">
+							<loading-wrap class="loading"></loading-wrap>
+						</div>
+					</div>
+				</li>
+
 				<li class="mix type-1 check1 radio2 option3">
 					<div class="box" box>
-						<div class="detail" detail>
-							<div class="title">标题</div>
-							<div class="little-title">2016.09.14</div>
-						</div>
-						<div class="left-double-box">
-							<div class="main-msg">
-								<p class="msg-title">峰值（个）</p>
-								<p class="NumFont s-size">12,000</p>
+						<div class="main-box" column-box>
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="detail">
+								<div class="title">在线时长</div>
+								<div class="little-title">ONLINE TIMES</div>
 							</div>
-							<div class="chart-box" id="box_1" column-box></div>
+							<div class="left-double-box">
+								<div class="main-msg">
+									<p class="msg-title">峰值（个）</p>
+									<p class="num-font s-size">32,000</p>
+								</div>
+								<div class="chart-box" id="box_1" ></div>
+							</div>
 						</div>
-						
 					</div>
 				</li>
 				<li class="mix type-2 check2 radio2 option2">
 					<div class="box bar-box" box>
-						<div class="detail" detail>
-							<div class="title">在线时长</div>
-							<div class="little-title">ONLINE TIMES</div>
-						</div>
-						<div class="main-msg">
-							<span class="msg-title">时间（秒）</span>
-							<span class="NumFont m-size">12,000</span>
-						</div>
+						<div class="main-box" spline-box>
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="detail">
+								<div class="title">在线时长</div>
+								<div class="little-title">ONLINE TIMES</div>
+							</div>
+							<div class="main-msg">
+								<span class="msg-title">时间（秒）</span>
+								<span class="num-font m-size">12,000</span>
+							</div>
 
-						<div class="chart-box data-box no-axias" id="box_2" data-color="bo" spline-box></div>
+							<div class="chart-box data-box no-axias" id="box_2" data-color="bo"></div>
+						</div>
 					</div>
 				</li>
 				<li class="mix type-1 check3 radio3 option1">
 					<div class="box bar-box" box>
-						<div class="detail" detail>
-							<div class="title">在线时长</div>
-							<div class="little-title">ONLINE TIMES</div>
+						<div class="main-box" column-single-box>
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="detail">
+								<div class="title">在线时长</div>
+								<div class="little-title">ONLINE TIMES</div>
+							</div>
+							<div class="main-msg">
+								<span class="msg-title">峰值（个）</span>
+								<span class="num-font m-size">12,000</span>
+							</div>
+							<div class="chart-box data-box no-axias column-box small-box" id="box_3" ></div>
 						</div>
-						<div class="main-msg">
-							<span class="msg-title">峰值（个）</span>
-							<span class="NumFont m-size">12,000</span>
-						</div>
-						<div class="chart-box data-box no-axias column-box small-box" id="box_3" column-single-box></div>
 					</div>
 				</li>
 				<li class="mix type-1 check3 radio2 option4">
 					<div class="box bar-box" box>
-						<div class="detail" detail>
-							<div class="title">在线时长</div>
-							<div class="little-title">ONLINE TIMES</div>
-						</div>
-						<div class="main-msg">
-							<span class="msg-title">时间（秒）</span>
-							<span class="NumFont m-size">12,000</span>
-						</div>
+						<div class="main-box" spline-box>
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="detail">
+								<div class="title">在线时长</div>
+								<div class="little-title">ONLINE TIMES</div>
+							</div>
+							<div class="main-msg">
+								<span class="msg-title">时间（秒）</span>
+								<span class="num-font m-size">12,000</span>
+							</div>
 
-						<div class="chart-box data-box no-axias" id="box_4" data-color="rg" spline-box></div>
+							<div class="chart-box data-box no-axias" id="box_4" data-color="rg"></div>
+						</div>
 					</div>
 				</li>
 				<li class="mix type-1 check3 radio2 option1">
 					<div class="box" box>
-						<div class="detail" detail>
-							<div class="title">标题</div>
-							<div class="little-title">2016.09.14</div>
-						</div>
-						<div class="right-double-box">
-							<div class="main-msg">
-								<p class="msg-title">峰值（个）</p>
-								<p class="NumFont s-size">12,000</p>
+						<div class="main-box" pie-box>
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="detail">
+								<div class="title">在线时长</div>
+								<div class="little-title">ONLINE TIMES</div>
 							</div>
-							<div class="chart-box" id="box_5" pie-box></div>
+							<div class="right-double-box">
+								<div class="main-msg">
+									<p class="msg-title">峰值（个）</p>
+									<p class="num-font s-size">12,000</p>
+								</div>
+								<div class="chart-box" id="box_5"></div>
+							</div>
 						</div>
 						
 					</div>
 				</li>
 				<li class="mix type-1 check3 radio2 option4">
 					<div class="box">
-						box
+						<div class="main-box" loading-box>
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="detail">
+								<div class="title">在线时长</div>
+								<div class="little-title">ONLINE TIMES</div>
+							</div>
+							<div class="main-msg">
+									<p class="msg-title">峰值（个）</p>
+									<p class="main-data"><i class="fa fa-arrow-up green-font" aria-hidden="true"></i><span class="num-font s-size">12,000</span></p>
+								</div>
+							<div class="loading-bar">
+								<div class="animation-bar green"></div>
+							</div>
+						</div>
 					</div>
 				</li>
 				<li class="mix type-1 check3 radio3 option1">
 					<div class="box">
-						box
+						<div class="main-box" loading-box>
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="detail">
+								<div class="title">在线时长</div>
+								<div class="little-title">ONLINE TIMES</div>
+							</div>
+							<div class="main-msg">
+									<p class="msg-title">峰值（个）</p>
+									<p class="main-data"><i class="fa fa-arrow-up red-font" aria-hidden="true"></i><span class="num-font s-size">12,000</span></p>
+								</div>
+							<div class="loading-bar">
+								<div class="animation-bar red"></div>
+							</div>
+						</div>
 					</div>
 				</li>
 				<li class="mix type-1 check3 radio2 option4">
 					<div class="box">
-						box                                                 
+						<loading-wrap></loading-wrap>                                         
 					</div>
 				</li>
 				<!-- <li class="mix type-1 check1 radio3 option2"><img src="../static/images/img-5.jpg" alt="Image 5"></li>
@@ -207,12 +258,20 @@
 		<!-- <a href="#0" class="cd-filter-trigger">Filters</a> -->
 	</main> <!-- cd-main-content -->
 <script type="text/javascript" src="../static/dist/jquery/jquery-2.1.1.js"></script>
-<script type="text/javascript" src="../static/dist/angular/angular.min.js"></script>
+<!-- <script type="text/javascript" src="../static/dist/countUp/countUp.min.js"></script> -->
+
 <script type="text/javascript" src="../static/dist/mixitup/jquery.mixitup.min.js"></script>
 <script type="text/javascript" src="../static/dist/highchart/highcharts.js"></script>
+
+<script type="text/javascript" src="../static/dist/angular/angular.min.js"></script>
+<!-- <script type="text/javascript" src="../static/dist/countUp/angular-countUp.min.js"></script> -->
+
+
 <script type="text/javascript" src="../static/js/chartList/chart.js"></script>
 <script type="text/javascript" src="../static/js/chartList/noborderChart.js"></script>
 <script type="text/javascript" src="../static/js/app.js"></script>
+<script type="text/javascript" src="../static/js/directive/loading.js"></script>
 <script type="text/javascript" src="../static/js/main.js"></script>
+
 
 </html>

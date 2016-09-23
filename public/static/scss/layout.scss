@@ -5,13 +5,81 @@ watcher style
 
 -------------------------------- */
 
+/*common style*/
 
+$green:#0dc688;
+$blue:#26bcf1;
+$orange:#fd694b;
+$main-red:#f06565;
+$red:#fc67af;
+$deep-red:#fd4963;
+$gray:#999;
 
 @font-face{
   font-family: kanit;
   src: url('../font/Kanit-ExtraLight.ttf'),
        url('../font/Kanit-ExtraLight.otf');
 }
+
+.green{
+    background: $green;
+  }
+.red{
+  background: $deep-red;
+}
+.orange{
+  background: $orange;
+}
+.blue{
+  background: $blue;
+}
+.main-red{
+  background: $main-red;
+}
+.deep-red{
+  background: $deep-red;
+}
+.green-font{
+  color: $green;
+}
+.red-font{
+  color: $deep-red;
+}
+.orange-font{
+  color: $orange;
+}
+.blue-font{
+  color: $blue;
+}
+.main-red-font{
+  color: $main-red;
+}
+.deep-red-font{
+  color: $deep-red;
+}
+
+/*字体大小控制*/
+.m-size{
+  font-size: 30px;
+}
+
+
+.highcharts-xaxis-labels text{
+  /* width: 800px!important;
+  margin-right: 300px;
+  -webkit-transform:scale(0.85) translate(25px, 25px); */
+}
+
+
+.no-axias{
+  .highcharts-xaxis-labels{
+    display: none;
+  }
+  .highcharts-axis{
+    display: none;
+  }
+}
+
 
 *, *::after, *::before {
   -webkit-box-sizing: border-box;
@@ -41,6 +109,8 @@ a {
   color: #C55B57;
   text-decoration: none;
 }
+
+/*end common style*/
 
 /* -------------------------------- 
 
@@ -672,7 +742,9 @@ body{
 		font-family: 'Microsoft YaHei',"Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; 
 }
 
+/*main box控件*/
 .box{
+  overflow: hidden;
 	float:left;
 	background: url(../static/images/img-1.jpg);
 	background: #ebedec;
@@ -708,12 +780,8 @@ body{
       font-family: 'Arial';
       font-weight: 500;
     }
-
   }
-
 }
-
-
 
 .chart-box{
 	height: 150px;
@@ -721,10 +789,11 @@ body{
 }
 
 .main-msg{
+  margin: 0 10px;
   text-align: right;
   .msg-title{
     display: inline-block;
-    color: #333;
+    color: $gray;
     font-size: 10px;
     margin-bottom: 10px;
   }
@@ -734,7 +803,7 @@ body{
   height: 120px;
 }
 
-.NumFont{
+.num-font{
   font-family: kanit,sans-serif;
   font-style: normal;
   font-weight: 200;
@@ -743,32 +812,12 @@ body{
   padding-right: 10px;
 }
 
-/*字体大小控制*/
-.m-size{
-  font-size: 30px;
-}
 
-
-.highcharts-xaxis-labels text{
-	/* width: 800px!important;
-	margin-right: 300px;
-	-webkit-transform:scale(0.85) translate(25px, 25px); */
-}
-
-
-.no-axias{
-  .highcharts-xaxis-labels{
-    display: none;
-  }
-  .highcharts-axis{
-    display: none;
-  }
-}
 
 /*menu*/
 .banner-box{
   
-  background: #f06565;
+  background: $main-red;
   .filter a{
     color: #fff!important;
   }
@@ -781,6 +830,7 @@ body{
 .left-double-box{
   width: 100%;
   .main-msg{
+    margin: 0;
     margin-left: 10px;
     text-align: left;
     width: 80px;
@@ -788,7 +838,7 @@ body{
     float: left;
     .msg-title{
       margin-bottom: 5px;
-      color: #666;
+      color: $gray;
       font-size: 14px;
     }
     .s-size{
@@ -806,6 +856,7 @@ body{
 .right-double-box{
   width: 100%;
   .main-msg{
+    margin: 0;
     padding-top: 40px;
     margin-right: 10px;
     text-align: left;
@@ -813,7 +864,7 @@ body{
     float: right;
     .msg-title{
       margin-bottom: 5px;
-      color: #666;
+      color: $gray;
       font-size: 14px;
     }
     .s-size{
@@ -824,4 +875,45 @@ body{
   .chart-box{
     margin-right: 90px;
   }
+}
+
+
+.loading-bar{
+  margin: 10px;
+  background: #f3f3f4;
+  height: 2.5px;
+
+  .animation-bar{
+    width: 0;
+    height:100%;
+    
+    transition-duration: 0.4s;
+    transition-property: width;
+    transition-timing-function:ease-in-out;
+  }
+  .animation{
+    width: 80%;
+  }
+}
+
+
+
+/*loading box*/
+.loading-wrap{
+  position: relative;
+  /* height: 100%; */
+  height: 240px;
+  width: 100%;  
+  .loading-animaiton{
+    overflow: auto;
+    margin: auto;  
+    position: absolute;  
+    top: 0; left: 0; bottom: 0; right: 0;  
+  }
+}
+
+
+/*clock box*/
+.clock-box{
+  background: #040404;
 }
