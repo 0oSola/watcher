@@ -1,6 +1,6 @@
 (function(){
 	angular.module('clock', [])
-	.directive('clock', [function () {
+	.directive('clock', ['$interval',function ($interval) {
 		return {
 			restrict: 'AE',
 			templateUrl:'../../../templates/clock.html',
@@ -16,7 +16,7 @@
 					$scope.timer.year = date.toLocaleDateString().replace(/[/]/g,'.');
 					var time = date.toTimeString();
 					$scope.timer.hour = time.substring(0,time.indexOf(":")+1);
-					$scope.timer.minute = time.substring(time.indexOf(":")+1,time.indexOf(":")+3);
+					$scope.timer.minute = time.substring(time.indexOf(":")+1,time.indexOf(":")+6);
 					switch(date.getDay()){
 						case 0:
 							$scope.timer.day = '星期天';
@@ -46,6 +46,9 @@
 			},
 			link: function (scope, iElement, iAttrs) {
 				scope.getDate();
+				$interval(function(){
+					scope.getDate();
+				},1000)
 			}
 		};
 	}])
