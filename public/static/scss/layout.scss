@@ -19,6 +19,8 @@ $gray:#999;
   font-family: kanit;
   src: url('../font/Kanit-ExtraLight.ttf'),
        url('../font/Kanit-ExtraLight.otf');
+  font-family: openSans;
+  src: url('../font/OpenSans-Regular.ttf');
 }
 
 .green{
@@ -916,4 +918,128 @@ body{
 /*clock box*/
 .clock-box{
   background: #040404;
+  height: 240px;
+  width: 100%;
+  position: relative;
+  .clock-layout{
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 100%; 
+    padding: 2px;
+    background: -webkit-linear-gradient(left, #040404 0%, #040404 100%),-webkit-linear-gradient(left, #040404 30%,#f0f0f0 30%, #f0f0f0 100%);
+    background-clip: content-box, padding-box;
+    width: 200px;
+    height: 200px;
+    -webkit-transform: rotate(30deg);
+        -ms-transform: rotate(30deg);
+         -o-transform: rotate(30deg);
+            transform: rotate(30deg);
+  }
+  .clock-layout-resize{
+    background: -webkit-linear-gradient(left,#040404 0%,#040404 100%),-webkit-linear-gradient(left,#040404 40%,#f0f0f0 40%,#f0f0f0 100%);
+    background-clip: content-box, padding-box;
+    width: 180px;
+    height: 180px;
+    -webkit-transform: rotate(18deg);
+        -ms-transform: rotate(18deg);
+         -o-transform: rotate(18deg);
+            transform: rotate(18deg);
+    /* transform: scale(0.91); */
+  }
+  .clock-dotted{
+    margin-top: 14px;
+    margin-left: 10px;
+    position: relative;
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+    transform: rotate(-18deg);
+    span{
+      margin: auto;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: inline-block;
+      background: #f0f0f0;
+      width: 2px;
+      height: 2px;
+      border-radius: 100%;
+    }
+    span:nth-child(1){
+      transform: rotate(30deg) translateY(-75px);
+    }
+    span:nth-child(2){
+      transform: rotate(60deg) translateY(-75px);
+    }
+    span:nth-child(3){
+      transform: rotate(90deg) translateY(-75px);
+    }
+    span:nth-child(4){
+      transform: rotate(120deg) translateY(-75px);
+    }
+    span:nth-child(5){
+      transform: rotate(150deg) translateY(-75px);
+    }
+    span:nth-child(6){
+      transform: rotate(180deg) translateY(-75px);
+    }
+    span:nth-child(7){
+      transform: rotate(-150deg) translateY(-75px);
+    }
+    span:nth-child(8){
+      transform: rotate(-120deg) translateY(-75px);
+    }
+    span:nth-child(9){
+      transform: rotate(-90deg) translateY(-75px);
+    }
+    span:nth-child(10){
+      transform: rotate(-60deg) translateY(-75px);
+    }
+    span:nth-child(11){
+      transform: rotate(-30deg) translateY(-75px);
+    }
+    span:nth-child(12){
+      transform: rotate(0deg) translateY(-75px);
+    }
+  }
+  .clock-main{
+    position: relative;
+    font-family: openSans,sans-serif;
+    height: 240px;
+    width: 100%;
+    color: #f0f0f0;
+    .timer-layout{
+      width: 145px;
+      height: 80px;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      .left-box{
+        display: inline-block;
+        font-size: 55px;
+        font-weight:500; 
+      }
+      .right-box{
+        display: inline-block;
+        .minute-box{
+          font-size:24px;
+        }
+        .date-box{
+          line-height:15px;
+          font-size: 12px;
+        }
+      }
+    }
+    
+  }
+
 }
