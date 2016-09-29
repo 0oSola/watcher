@@ -5,6 +5,7 @@ function redgreensplineChart(data,xName,yName,lineName,ele){
     var colorline2 = ["#22cc92","#e54598"];
     var chart = "";
     var seriesList = [];
+    var errorColor = '#e54598';
 
     for(var i=0;i<data.length;i++){
         var item = {
@@ -13,7 +14,6 @@ function redgreensplineChart(data,xName,yName,lineName,ele){
             name:lineName[i]
         }
         seriesList.push(item);
-
     }
     chart = new Highcharts.Chart({
         chart: {
@@ -285,7 +285,7 @@ function bluecolumnChart(data,xName,yName,lineName,ele){
             footerFormat: '',*/
             formatter: function() {
                 return '<div style="border:1px solod '+this.points[1].color+'">'+
-                '<h3><span style="color:'+this.points[1].color+'">●</span>'+this.x+'</h3><br>'+
+                '<h3><span style="color:'+this.points[1].color+'">●</span>'+this.points[1].point.xname+'</h3><br>'+
                 ' <div>' +this.points[1].series.name+":"+ this.points[1].y +'</div></div>';
             },
             valueSuffix: ' '
@@ -377,8 +377,8 @@ function greencolumnChart(data,xName,yName,lineName,ele){
                 '<b>{point.y}</b></div>',
             footerFormat: '',*/
             formatter: function() {
-                return '<div style="border:1px solod '+this.points[0].color+'">'+
-                '<h3><span style="color:'+this.points[0].color+'">●</span>'+this.x+'</h3><br>'+
+                return '<div style="border:1px solid '+this.points[0].color+'">'+
+                '<h3><span style="color:'+this.points[0].color+'">●</span>'+this.points[0].point.xname+'</h3><br>'+
                 ' <div>' +this.points[0].series.name+":"+ this.points[0].y +'</div></div>';
             },
             valueSuffix: ' '

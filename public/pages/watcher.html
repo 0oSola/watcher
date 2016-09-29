@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>watcher</title>
+	<title>GM监控</title>
 	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="../static/dist/font-awesome-4.6.3/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../static/dist/css-loading/circle.css">
@@ -17,18 +17,17 @@
 			<div class="cd-tab-filter">
 				<ul class="cd-filters">
 					<li class="placeholder"> 
-						<a data-type="all" href="#0">All</a> selected option on mobile
+						<a data-type="all" href="#0">All</a>
 					</li> 
 					<li class="filter"><a class="selected" href="#0" data-type="all">All</a></li>
-					<li class="filter" data-filter=".type-1"><a href="#0" data-type="type-1">角色库</a></li>
-					<li class="filter" data-filter=".type-2"><a href="#0" data-type="type-2">其他</a></li>
+					<li class="filter" data-filter=".type-2"><a href="#0" data-type="type-2">角色库</a></li>
+					<li class="filter" data-filter=".type-1"><a href="#0" data-type="type-1">其他</a></li>
 				</ul> <!-- cd-filters -->
 			</div> <!-- cd-tab-filter -->
 		</div> <!-- cd-tab-filter-wrapper -->
 
 		<section class="cd-gallery" box-list>
 			<ul>
-
 				<li class="mix type-1 type-2 check1 radio2 option3">
 					<div class="box clock-box" box>
 						<clock></clock>
@@ -37,73 +36,110 @@
 
 				<li class="mix type-1 check1 radio2 option3">
 					<div class="box" box>
-						<div class="main-box" column-box>
+						<div class="main-box" column-box action="middle">
 							<loading-wrap class="loading"></loading-wrap>
 							<div class="detail">
-								<div class="title">在线时长</div>
-								<div class="little-title">ONLINE TIMES</div>
+								<div class="title">增值服务监控</div>
+								<div class="little-title">{{ action_type | uppercase }}</div>
 							</div>
 							<div class="left-double-box">
 								<div class="main-msg">
-									<p class="msg-title">峰值（个）</p>
-									<p class="num-font s-size">32,000</p>
+									<p class="msg-title">最高延迟(秒)</p>
+									<p class="num-font s-size">{{ max }}</p>
 								</div>
-								<div class="chart-box" id="box_1" ></div>
+								<div class="chart-box" id="middle"></div>
 							</div>
 						</div>
 					</div>
 				</li>
-				<li class="mix type-2 check2 radio2 option2">
+				<!-- <li class="mix type-2 check2 radio2 option2">
 					<div class="box bar-box" box>
-						<div class="main-box" spline-box>
+						<div class="main-box" spline-box action="middle">
 							<loading-wrap class="loading"></loading-wrap>
 							<div class="detail">
-								<div class="title">在线时长</div>
+								<div class="title">增值服务平台异常点分布</div>
 								<div class="little-title">ONLINE TIMES</div>
 							</div>
 							<div class="main-msg">
-								<span class="msg-title">时间（秒）</span>
+								<span class="msg-title">异常点说明：1为异常点</span>
 								<span class="num-font m-size">12,000</span>
 							</div>
-
-							<div class="chart-box data-box no-axias" id="box_2" data-color="bo"></div>
+							<div class="chart-box data-box no-axias" id="middle_unusual" data-color="bo"></div>
+						</div>
+					</div>
+				</li> -->
+				<li class="mix type-1 check1 radio2 option3">
+					<div class="box" box>
+						<div class="main-box" column-box action="paysys">
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="detail">
+								<div class="title">PAYSYS监控</div>
+								<div class="little-title">{{ action_type | uppercase }}</div>
+							</div>
+							<div class="left-double-box">
+								<div class="main-msg">
+									<p class="msg-title">最高延迟(秒)</p>
+									<p class="num-font s-size">{{ max }}</p>
+								</div>
+								<div class="chart-box" id="paysys"></div>
+							</div>
 						</div>
 					</div>
 				</li>
+				<!-- <li class="mix type-1 check3 radio2 option4">
+					<div class="box bar-box" box>
+						<div class="main-box" spline-box action="paysys">
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="detail">
+								<div class="title">PaySys异常分布</div>
+								<div class="little-title">ONLINE TIMES</div>
+							</div>
+							style="visibility: hidden;"
+							<div class="main-msg">
+								<span class="msg-title">异常点说明：1为异常点</span>
+								<span class="num-font m-size">12,000</span>
+							</div>
+				
+							<div class="chart-box data-box no-axias" id="paysys_unusual" data-color="rg"></div>
+						</div>
+					</div>
+				</li> -->
 				<li class="mix type-1 check3 radio3 option1">
 					<div class="box bar-box" box>
-						<div class="main-box" column-single-box>
+						<div class="main-box" column-single-box action="icharge">
 							<loading-wrap class="loading"></loading-wrap>
 							<div class="detail">
-								<div class="title">在线时长</div>
-								<div class="little-title">ONLINE TIMES</div>
+								<div class="title">ICHARGE监控</div>
+								<div class="little-title">{{ action_type | uppercase }}</div>
 							</div>
 							<div class="main-msg">
-								<span class="msg-title">峰值（个）</span>
-								<span class="num-font m-size">12,000</span>
-							</div>
-							<div class="chart-box data-box no-axias column-box small-box" id="box_3" ></div>
-						</div>
-					</div>
-				</li>
-				<li class="mix type-1 check3 radio2 option4">
-					<div class="box bar-box" box>
-						<div class="main-box" spline-box>
-							<loading-wrap class="loading"></loading-wrap>
-							<div class="detail">
-								<div class="title">在线时长</div>
-								<div class="little-title">ONLINE TIMES</div>
-							</div>
-							<div class="main-msg">
-								<span class="msg-title">时间（秒）</span>
-								<span class="num-font m-size">12,000</span>
+								<span class="msg-title">最高延迟(秒)</span>
+								<span class="num-font m-size">{{ max }}</span>
+								<div class="max-date">{{max_timer}}</div>
 							</div>
 
-							<div class="chart-box data-box no-axias" id="box_4" data-color="rg"></div>
+							<div class="chart-box data-box no-axias column-box small-box" id="icharge"></div>
 						</div>
 					</div>
 				</li>
-				<li class="mix type-1 check3 radio2 option1">
+				<!-- <li class="mix type-1 check3 radio2 option4">
+					<div class="box bar-box" box>
+						<div class="main-box" spline-box action="icharge">
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="detail">
+								<div class="title">icharge异常分布</div>
+								<div class="little-title">ONLINE TIMES</div>
+							</div>
+							<div class="main-msg">
+								<span class="msg-title">异常点说明：1为异常点</span>
+								<span class="num-font m-size">12,000</span>
+							</div>
+				
+							<div class="chart-box data-box no-axias" id="icharge_unusual" data-color="rg"></div>
+						</div>
+					</div>
+				</li> -->
+				<!-- <li class="mix type-1 check3 radio2 option1">
 					<div class="box" box>
 						<div class="main-box" pie-box>
 							<loading-wrap class="loading"></loading-wrap>
@@ -157,15 +193,20 @@
 							</div>
 						</div>
 					</div>
-				</li>
-				<li class="mix type-1 check3 radio2 option4">
+				</li> -->
+				<!--<li class="mix type-1 check3 radio2 option4">
 					<div class="box">
 						<loading-wrap></loading-wrap>
 						                                   
 					</div>
 				</li>
-				<!-- <li class="mix type-1 check1 radio3 option2"><img src="../static/images/img-5.jpg" alt="Image 5"></li>
-				<li class="mix type-2 check2 radio3 option3"><img src="../static/images/img-6.jpg" alt="Image 6"></li>
+				
+
+				<li class="mix type-1 check1 radio3 option2">
+					<div class="box"> 
+					</div>
+				</li> -->
+				<!-- <li class="mix type-2 check2 radio3 option3"><img src="../static/images/img-6.jpg" alt="Image 6"></li>
 				<li class="mix type-2 check2 radio2 option1"><img src="../static/images/img-7.jpg" alt="Image 7"></li>
 				<li class="mix type-1 check1 radio3 option4"><img src="../static/images/img-8.jpg" alt="Image 8"></li>
 				<li class="mix type-2 check1 radio2 option3"><img src="../static/images/img-9.jpg" alt="Image 9"></li>
@@ -182,77 +223,7 @@
 
 
 
-		<div class="cd-filter">
-			<form>
-				<div class="cd-filter-block">
-					<h4>Search</h4>
-					
-					<div class="cd-filter-content">
-						<input type="search" placeholder="尝试输入 type-1...">
-					</div> <!-- cd-filter-content -->
-				</div> <!-- cd-filter-block -->
-
-				<div class="cd-filter-block">
-					<h4>Check boxes</h4>
-
-					<ul class="cd-filter-content cd-filters list">
-						<li>
-							<input class="filter" data-filter=".check1" type="checkbox" id="checkbox1">
-			    			<label class="checkbox-label" for="checkbox1">Option 1</label>
-						</li>
-
-						<li>
-							<input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
-							<label class="checkbox-label" for="checkbox2">Option 2</label>
-						</li>
-
-						<li>
-							<input class="filter" data-filter=".check3" type="checkbox" id="checkbox3">
-							<label class="checkbox-label" for="checkbox3">Option 3</label>
-						</li>
-					</ul> <!-- cd-filter-content -->
-				</div> <!-- cd-filter-block -->
-
-				<div class="cd-filter-block">
-					<h4>Select</h4>
-					
-					<div class="cd-filter-content">
-						<div class="cd-select cd-filters">
-							<select class="filter" name="selectThis" id="selectThis">
-								<option value="">Choose an option</option>
-								<option value=".option1">Option 1</option>
-								<option value=".option2">Option 2</option>
-								<option value=".option3">Option 3</option>
-								<option value=".option4">Option 4</option>
-							</select>
-						</div> <!-- cd-select -->
-					</div> <!-- cd-filter-content -->
-				</div> <!-- cd-filter-block -->
-
-				<div class="cd-filter-block">
-					<h4>Radio buttons</h4>
-
-					<ul class="cd-filter-content cd-filters list">
-						<li>
-							<input class="filter" data-filter="" type="radio" name="radioButton" id="radio1" checked>
-							<label class="radio-label" for="radio1">All</label>
-						</li>
-
-						<li>
-							<input class="filter" data-filter=".radio2" type="radio" name="radioButton" id="radio2">
-							<label class="radio-label" for="radio2">Choice 2</label>
-						</li>
-
-						<li>
-							<input class="filter" data-filter=".radio3" type="radio" name="radioButton" id="radio3">
-							<label class="radio-label" for="radio3">Choice 3</label>
-						</li>
-					</ul> <!-- cd-filter-content -->
-				</div> <!-- cd-filter-block -->
-			</form>
-
-			<a href="#0" class="cd-close">Close</a>
-		</div> <!-- cd-filter -->
+		
 
 		<!-- <a href="#0" class="cd-filter-trigger">Filters</a> -->
 	</main> <!-- cd-main-content -->
