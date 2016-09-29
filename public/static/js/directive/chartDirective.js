@@ -28,7 +28,7 @@
 			scope:{},
 			require:'^?boxList',
 			controller:['$scope','$http',function($scope,$http){
-				this.request = function(){
+				/*this.request = function(){
 					return $http({
 						url:'/getData?jsone=JSON_CALLBACK',
 						method:'POST',
@@ -36,7 +36,7 @@
 							type:'10'
 						}
 					})
-				};
+				};*/
 				this.QuerMiddle = function(type){
 					console.log(type);
 					return $http({

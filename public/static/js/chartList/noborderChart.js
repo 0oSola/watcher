@@ -384,6 +384,9 @@ function greencolumnChart(data,xName,yName,lineName,ele){
             valueSuffix: ' '
         },
         plotOptions: {
+            series: {  
+                minPointLength: 2   //设置最小值
+            }  
             /*column: {
                 stacking: 'percent'
             },*/
