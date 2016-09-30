@@ -28,17 +28,8 @@
 			scope:{},
 			require:'^?boxList',
 			controller:['$scope','$http',function($scope,$http){
-				/*this.request = function(){
-					return $http({
-						url:'/getData?jsone=JSON_CALLBACK',
-						method:'POST',
-						data:{
-							type:'10'
-						}
-					})
-				};*/
 				this.QuerMiddle = function(type){
-					console.log(type);
+					/*console.log(type);*/
 					return $http({
 						///getData1
 						url:'http://10.20.72.64:8080/GM_Monitor/QueryMonitorInfoController/QuerMiddle.do?action='+type+'&jsonp=JSON_CALLBACK',
@@ -49,8 +40,8 @@
 					//图表
 					createChart:function(target_id,chartType,date,withTime,status,action_type,type){
 						var chart_data = [];
-					
-						for(i=0;i<=date.length;i++){
+
+						for(i=0;i<date.length;i++){
 							if(status[i]==1){
 								item = {
 									'xname':date[i]+'(异常点)',
@@ -73,18 +64,13 @@
 							chart_data.push(inline_arr);
 						}
 						chartname = ['延迟(秒)'];
-						x_name=date;
+
+						x_name = [];
+						for(j=0;j<date.length;j++){
+							x_name[j] = date[j].substring(10,date[j].length-3);
+						}
 						y_name='';
-/*						switch(type){
-							case 1:
-							break;
-							case 2:
-							break;
-							case 3:
-							break;
-							case 4:
-							break;
-						}*/
+
 						if(chartType == 'area'){
 							chartEg = exampleAreaChart(chart_data,x_name,y_name,chartname,target_id); 
 							chartEg = areaChart(chart_data,x_name,y_name,chartname,target_id);
@@ -211,7 +197,7 @@
 		}
 	}])
 
-	app.directive('columnBox', ['$interval',function ($interval) {
+	app.directive('columnBox', ['$interval','$timeout',function ($interval,$timeout) {
 		return {
 			restrict: 'A',
 			scope:true,
@@ -242,10 +228,13 @@
 							pctrl.builder.createChart(id,'bluecolumnChart',data.setDate,data.withTime,data.status,data.action_type,data.type);
 							//pctrl.builder.buildChart(id,'bluecolumnChart',data.chart_data,data.x_name,data.y_name,data.chart_name);
 						}else{
-							iElement.find('.error-msg').text("连接不上服务器");
+							iElement.find('.error-msg').text(response.data.message);
 						}
 					},function errorCallBack(response){
 						iElement.find('.error-msg').text("连接不上服务器");
+						$timeout(function(){
+							getData();
+						},60000);
 					})
 				}
 				getData();
@@ -256,7 +245,7 @@
 			}
 		};
 	}])
-	app.directive('columnSingleBox', ['$interval',function ($interval) {
+	app.directive('columnSingleBox', ['$interval','$timeout',function ($interval,$timeout) {
 		return {
 			restrict: 'A',
 			require:'?^box',
@@ -294,7 +283,10 @@
 							pctrl.builder.createChart(id,'greencolumnChart',data.setDate,data.withTime,data.status,data.action_type,data.type)
 							/*pctrl.builder.buildChart(id,'greencolumnChart',data.chart_data,data.x_name,data.y_name,data.chart_name);*/
 						}else{
-							iElement.find('.error-msg').text("连接不上服务器");
+							iElement.find('.error-msg').text(response.data.message);
+							$timeout(function(){
+								getData();
+							},60000);
 						}
 					},function errorcallback(response){
 						iElement.find('.error-msg').text("连接不上服务器");

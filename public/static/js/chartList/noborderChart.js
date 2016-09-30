@@ -247,7 +247,6 @@ function bluecolumnChart(data,xName,yName,lineName,ele){
 
     
     seriesList.push(item);
-
     chart = new Highcharts.Chart({
         chart: {
             type: 'column',
@@ -257,12 +256,21 @@ function bluecolumnChart(data,xName,yName,lineName,ele){
             text: ''
         },
         xAxis: {
-            visible:false,
+            /*visible:false,*/
             //gridLineColor: '#eee',//纵向网格线颜色
             //gridLineWidth: 1, //纵向网格线宽度
+            tickInterval: 6,
+            //lineColor : '#990000',//自定义刻度颜色
+            tickWidth:0,
             categories: xName,
             title: {
                 text: null
+            },
+            labels: {
+                style: {
+                    font: '10px',
+                    color:'#999'
+                }
             }
         },
         yAxis: {
@@ -273,7 +281,10 @@ function bluecolumnChart(data,xName,yName,lineName,ele){
                 align: 'high'
             },
             labels: {
-                overflow: 'justify'
+                overflow: 'justify',
+                formatter: function() {
+                    return this.value + ' %';
+                }
             }
         },
         tooltip: {
@@ -350,13 +361,23 @@ function greencolumnChart(data,xName,yName,lineName,ele){
             text: ''
         },
         xAxis: {
-            visible:false,
+            /*visible:false,*/
             //gridLineColor: '#eee',//纵向网格线颜色
             //gridLineWidth: 1, //纵向网格线宽度
+            tickInterval: 4,
+            //lineColor : '#990000',//自定义刻度颜色
+            tickWidth:0,
             categories: xName,
             title: {
                 text: null
+            },
+            labels: {
+                style: {
+                    font: '10px',
+                    color:'#999'
+                }
             }
+
         },
         yAxis: {
             visible:false,

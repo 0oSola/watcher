@@ -22,6 +22,7 @@
 					<li class="filter"><a class="selected" href="#0" data-type="all">All</a></li>
 					<li class="filter" data-filter=".type-2"><a href="#0" data-type="type-2">角色库</a></li>
 					<li class="filter" data-filter=".type-1"><a href="#0" data-type="type-1">其他</a></li>
+					<li class="filter" data-filter=".type-3"><a href="#0" data-type="type-3">PAYSYS</a></li>
 				</ul> <!-- cd-filters -->
 			</div> <!-- cd-tab-filter -->
 		</div> <!-- cd-tab-filter-wrapper -->
@@ -39,7 +40,7 @@
 						
 						<div class="main-box" column-box action="middle">
 							<loading-wrap class="loading"></loading-wrap>
-							<div class="tip"><i class="error-font">●</i>异常点</div>
+							<div class="tip"><i class="error-font">●</i> 为异常点</div>
 							<div class="detail">
 								<div class="title">增值服务监控</div>
 								<div class="little-title">{{ action_type | uppercase }}</div>
@@ -70,10 +71,11 @@
 						</div>
 					</div>
 				</li> -->
-				<li class="mix type-1 check1 radio2 option3">
+				<li class="mix type-3 check1 radio2 option3">
 					<div class="box" box>
 						<div class="main-box" column-box action="paysys">
 							<loading-wrap class="loading"></loading-wrap>
+							<div class="tip"><i class="error-font">●</i> 为异常点</div>
 							<div class="detail">
 								<div class="title">PAYSYS监控</div>
 								<div class="little-title">{{ action_type | uppercase }}</div>
@@ -110,6 +112,7 @@
 					<div class="box bar-box" box>
 						<div class="main-box" column-single-box action="icharge">
 							<loading-wrap class="loading"></loading-wrap>
+							<div class="tip"><i class="error-font">●</i> 为异常点</div>
 							<div class="detail">
 								<div class="title">ICHARGE监控</div>
 								<div class="little-title">{{ action_type | uppercase }}</div>
