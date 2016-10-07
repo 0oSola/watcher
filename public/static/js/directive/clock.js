@@ -1,6 +1,6 @@
 (function(){
 	angular.module('clock', [])
-	.directive('clock', ['$interval',function ($interval) {
+	.directive('clock', ['$interval','$timeout',function ($interval,$timeout) {
 		return {
 			restrict: 'AE',
 			templateUrl:'../../../templates/clock.html',
@@ -46,6 +46,9 @@
 			},
 			link: function (scope, iElement, iAttrs) {
 				scope.getDate();
+				$timeout(function() {
+					iElement.find('.wedge').css('display','none')
+				}, 6000);
 				$interval(function(){
 					scope.getDate();
 				},1000)

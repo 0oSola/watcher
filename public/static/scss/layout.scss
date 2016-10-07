@@ -71,7 +71,7 @@ $gray:#999;
   color: #999;
 }
 
-/*×ÖÌå´óÐ¡¿ØÖÆ*/
+
 .m-size{
   font-size: 30px;
 }
@@ -759,7 +759,7 @@ body{
 		font-family: 'Microsoft YaHei',"Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; 
 }
 
-/*main box¿Ø¼þ*/
+/*main box*/
 .box{
   position: relative;
   overflow: hidden;
@@ -1167,6 +1167,7 @@ border-width: 1px; */
 }
 .wedge {
   background: #040404;
+
   height: 204px;
   width: 102px;
 }
@@ -1174,7 +1175,8 @@ border-width: 1px; */
   left: 102px;
 }
 .container1 .wedge {
-  animation: rotate-bg-1 6s infinite linear;
+  /* animation: rotate-bg-1 6s infinite linear; */
+  animation: rotate-bg-1 6s 1 linear;
   border-radius: 0 204px 204px 0;
   left: 0;
   transform-origin: 0 50%;
@@ -1183,7 +1185,7 @@ border-width: 1px; */
   left: 0;
 }
 .container2 .wedge {
-  animation: rotate-bg-2 6s infinite linear;
+  animation: rotate-bg-2 6s 1 linear;
   border-radius: 204px 0 0 204px;
   transform-origin: 102px 102px;
 }
@@ -1200,5 +1202,6 @@ border-width: 1px; */
   }
   100% {
     transform: rotateZ(180deg);
+    display: none;
   }
 }   
