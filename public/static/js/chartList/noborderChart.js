@@ -7,14 +7,25 @@ function redgreensplineChart(data,xName,yName,lineName,ele){
     var seriesList = [];
     var errorColor = '#e54598';
 
+
+
     for(var i=0;i<data.length;i++){
+
         var item = {
             data:data[i],
+            xAxis: 1,
             color:colorline2[i],
             name:lineName[i]
         }
         seriesList.push(item);
     }
+    var hover = {
+        pointRange: 0,
+        xAxis: 0,
+        name:''
+    }
+    seriesList.push(hover);
+
     chart = new Highcharts.Chart({
         chart: {
             type: 'spline',
@@ -38,9 +49,8 @@ function redgreensplineChart(data,xName,yName,lineName,ele){
             borderWidth: 1,
             backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
         },
-        xAxis: {
+        xAxis: [{
             //visible:false,
-            //categories: xName,
             gridLineColor: '#eee',//纵向网格线颜色
             gridLineWidth: 1, //纵向网格线宽度
             minorGridLineColor: '#eee',//次级网格
@@ -48,30 +58,29 @@ function redgreensplineChart(data,xName,yName,lineName,ele){
             minorTickLength: 0,
             minorGridLineDashStyle: 'longdash',
             minorTickInterval: 0.5,
-
-            /*[
-                'Monday',
-                'Tuesday',
-                'Wednesday',
-                'Thursday',
-                'Friday',
-                'Saturday',
-                'Sunday'
-            ],*/
-            /*plotBands: [{ // visualize the weekend
-                from: 4.5,
-                to: 6.5,
-                color: 'rgba(68, 170, 213, .2)'
-            }]*/
+            opposite: true,
+            min:0,
+            max:5,
+            lineWidth: 0,
+            lineColor: 'transparent',
             labels: {
-                visible:false,
+                enabled: false,
+                y : 20, rotation: -45, align: 'right'
+            }
+            
+        },{
+            categories: xName,
+            tickInterval: 6,
+            tickWidth:0,
+            labels: {
                 style: {
                     'color': 'black',
                     '-webkit-text-size-adjust':'none',
                     'font-size':'8px'
                 }
-            }
-        },
+            },
+            
+        }],
         yAxis: {
             visible:false,
             title: {
@@ -112,12 +121,21 @@ function blueorangesplineChart(data,xName,yName,lineName,ele){
     for(var i=0;i<data.length;i++){
         var item = {
             data:data[i],
+            xAxis:1,
             color:colorline2[i],
             name:lineName[i]
         }
         seriesList.push(item);
 
     }
+
+    var hover = {
+        pointRange: 0,
+        type: "spline",
+        xAxis: 0,
+        name:''
+    }
+    seriesList.push(hover);
     chart = new Highcharts.Chart({
         chart: {
             type: 'spline',
@@ -141,9 +159,8 @@ function blueorangesplineChart(data,xName,yName,lineName,ele){
             borderWidth: 1,
             backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
         },
-        xAxis: {
+        xAxis: [{
             //visible:false,
-            //categories: xName,
             gridLineColor: '#eee',//纵向网格线颜色
             gridLineWidth: 1, //纵向网格线宽度
             minorGridLineColor: '#eee',//次级网格
@@ -151,30 +168,30 @@ function blueorangesplineChart(data,xName,yName,lineName,ele){
             minorTickLength: 0,
             minorGridLineDashStyle: 'longdash',
             minorTickInterval: 0.5,
-
-            /*[
-                'Monday',
-                'Tuesday',
-                'Wednesday',
-                'Thursday',
-                'Friday',
-                'Saturday',
-                'Sunday'
-            ],*/
-            /*plotBands: [{ // visualize the weekend
-                from: 4.5,
-                to: 6.5,
-                color: 'rgba(68, 170, 213, .2)'
-            }]*/
+            opposite: true,
+            min:0,
+            max:5,
+            lineWidth: 0,
+            lineColor: 'transparent',
             labels: {
-                visible:false,
+                enabled: false,
+                y : 20, rotation: -45, align: 'right'
+            }
+            
+        },{
+            startOnTick: false,
+            categories: xName,
+            tickInterval: 6,
+            tickWidth:0,
+            labels: {
                 style: {
                     'color': 'black',
                     '-webkit-text-size-adjust':'none',
                     'font-size':'8px'
                 }
-            }
-        },
+            },
+            
+        }],
         yAxis: {
             visible:false,
             title: {
@@ -294,6 +311,7 @@ function bluecolumnChart(data,xName,yName,lineName,ele){
             pointFormat: '<div>{point.xname}: ' +
                 '<b>{point.y}</b></div>',
             footerFormat: '',*/
+            /*useHTML:true,*/
             formatter: function() {
                 return '<div style="border:1px solod '+this.points[1].color+'">'+
                 '<h3><span style="color:'+this.points[1].color+'">●</span>'+this.points[1].point.xname+'</h3><br>'+
