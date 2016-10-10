@@ -12,7 +12,7 @@
 
 <body ng-app="watcher">
 
-	<main class="cd-main-content">
+	<main class="cd-main-content" >
 		<div class="cd-tab-filter-wrapper banner-box">
 			<div class="cd-tab-filter">
 				<ul class="cd-filters">
@@ -26,9 +26,8 @@
 				</ul> <!-- cd-filters -->
 			</div> <!-- cd-tab-filter -->
 		</div> <!-- cd-tab-filter-wrapper -->
-
 		<section class="cd-gallery" box-list>
-			<ul>
+			<ul id="watch-list">
 				<li class="mix type-1 type-2 type-3 check1 radio2 option3">
 					<div class="box clock-box" box>
 						<clock></clock>
@@ -38,7 +37,7 @@
 				<li class="mix type-1 check1 radio2 option3">
 					<div class="box" box>
 						
-						<div class="main-box" column-box action="middle">
+						<div class="main-box" chart-box action="middle" data-color="bc">
 							<loading-wrap class="loading"></loading-wrap>
 							<div class="tip"><i class="error-font">●</i> 为异常点</div>
 							<div class="detail">
@@ -55,25 +54,9 @@
 						</div>
 					</div>
 				</li>
-				<!-- <li class="mix type-2 check2 radio2 option2">
-					<div class="box bar-box" box>
-						<div class="main-box" spline-box action="middle">
-							<loading-wrap class="loading"></loading-wrap>
-							<div class="detail">
-								<div class="title">增值服务平台异常点分布</div>
-								<div class="little-title">ONLINE TIMES</div>
-							</div>
-							<div class="main-msg">
-								<span class="msg-title">异常点说明：1为异常点</span>
-								<span class="num-font m-size">12,000</span>
-							</div>
-							<div class="chart-box data-box no-axias" id="middle_unusual" data-color="bo"></div>
-						</div>
-					</div>
-				</li> -->
 				<li class="mix type-3 check1 radio2 option3">
 					<div class="box" box>
-						<div class="main-box" column-box action="paysys">
+						<div class="main-box" chart-box action="paysys" data-color="bc">
 							<loading-wrap class="loading"></loading-wrap>
 							<div class="tip"><i class="error-font">●</i> 为异常点</div>
 							<div class="detail">
@@ -93,7 +76,7 @@
 				
 				<li class="mix type-1 check3 radio3 option1">
 					<div class="box bar-box" box>
-						<div class="main-box" column-single-box action="icharge">
+						<div class="main-box" chart-box action="icharge" data-color="gc">
 							<loading-wrap class="loading"></loading-wrap>
 							<div class="tip"><i class="error-font">●</i> 为异常点</div>
 							<div class="detail">
@@ -111,9 +94,9 @@
 					</div>
 				</li>
 				
-				<li class="mix type-1 check3 radio2 option4">
+				<!-- <li class="mix type-1 check3 radio2 option4">
 					<div class="box bar-box" box>
-						<div class="main-box" spline-box action="icharge" data-color="bo">
+						<div class="main-box" chart-box action="icharge" data-color="bos">
 							<loading-wrap class="loading"></loading-wrap>
 							<div class="tip"><i class="error-font">●</i> 为异常点</div>
 							<div class="detail">
@@ -130,10 +113,10 @@
 						</div>
 					</div>
 				</li>
-
+				
 				<li class="mix type-1 check3 radio2 option4">
 					<div class="box bar-box" box>
-						<div class="main-box" spline-box action="icharge">
+						<div class="main-box" chart-box action="icharge" data-color="rgs">
 							<loading-wrap class="loading"></loading-wrap>
 							<div class="tip"><i class="error-font">●</i> 为异常点</div>
 							<div class="detail">
@@ -149,7 +132,27 @@
 							<div class="chart-box spine-chart data-box no-axias" id="icharge_unusual" data-color="rg"></div>
 						</div>
 					</div>
-				</li>
+				</li> -->
+
+				<!-- <li class="mix type-2 check3 radio2 option4" ng-repeat="zone in zonelist">
+					<div class="box">
+						<div class="main-box" loading-box >
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="detail">
+								<div class="title">在线时长</div>
+								<div class="little-title">ONLINE TIMES</div>
+							</div>
+							<div class="main-msg">
+									<p class="msg-title">峰值（个）</p>
+									<p class="main-data"><i class="fa fa-arrow-up green-font" aria-hidden="true"></i><span class="num-font s-size">12,000</span></p>
+								</div>
+							<div class="loading-bar">
+								<div class="animation-bar green"></div>
+							</div>
+						</div>
+					</div>
+				</li> -->
+
 				<!-- <li class="mix type-1 check3 radio2 option1">
 					<div class="box" box>
 						<div class="main-box" pie-box>
@@ -171,7 +174,7 @@
 				</li>
 				<li class="mix type-1 check3 radio2 option4">
 					<div class="box">
-						<div class="main-box" loading-box>
+						<div class="main-box" loading-box >
 							<loading-wrap class="loading"></loading-wrap>
 							<div class="detail">
 								<div class="title">在线时长</div>
@@ -210,42 +213,42 @@
 						<loading-wrap></loading-wrap>
 						                                   
 					</div>
-				</li>
-				
-
-				<li class="mix type-1 check1 radio3 option2">
-					<div class="box"> 
-					</div>
-				</li>
-				<!-- <li class="mix type-2 check2 radio3 option3"><img src="../static/images/img-6.jpg" alt="Image 6"></li>
-				<li class="mix type-2 check2 radio2 option1"><img src="../static/images/img-7.jpg" alt="Image 7"></li>
-				<li class="mix type-1 check1 radio3 option4"><img src="../static/images/img-8.jpg" alt="Image 8"></li>
-				<li class="mix type-2 check1 radio2 option3"><img src="../static/images/img-9.jpg" alt="Image 9"></li>
-				<li class="mix type-1 check3 radio2 option4"><img src="../static/images/img-10.jpg" alt="Image 10"></li>
-				<li class="mix type-1 check3 radio3 option2"><img src="../static/images/img-11.jpg" alt="Image 11"></li>
-				<li class="mix type-2 check1 radio3 option1"><img src="../static/images/img-12.jpg" alt="Image 12"></li> -->
+				</li>-->
+				<li class="gap"></li>
 				<li class="gap"></li>
 				<li class="gap"></li>
 				<li class="gap"></li>
 			</ul>
-			<div class="cd-fail-message">No results found</div>
+			<ul class="tpl" style="display:none">
+				<li class="type-2 check2 radio2 option4">
+					<div class="box bar-box" box>
+						<div class="main-box" role-box action="role" data-color="bos">
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="tip"><i class="error-font">●</i> 为异常点</div>
+							<div class="detail">
+								<div class="title" ng-bind="watch_type"></div>
+								<div class="little-title" ng-bind="zone_name | uppercase"></div>
+							</div>
+							<div class="main-msg">
+								<span class="msg-title">最高延迟(秒)</span>
+								<span class="num-font m-size" ng-bind="max"></span>
+								<div class="max-date" ng-bind="max_timer"></div>
+							</div>
+				
+							<div class="chart-box spine-chart data-box no-axias" id=""></div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<!-- <div class="cd-fail-message">No results found</div> -->
 		</section> <!-- cd-gallery -->
-		
-
-
-
-		
-
-		<!-- <a href="#0" class="cd-filter-trigger">Filters</a> -->
 	</main> <!-- cd-main-content -->
 <script type="text/javascript" src="../static/dist/jquery/jquery-2.1.1.js"></script>
-<!-- <script type="text/javascript" src="../static/dist/countUp/countUp.min.js"></script> -->
 
 <script type="text/javascript" src="../static/dist/mixitup/jquery.mixitup.min.js"></script>
 <script type="text/javascript" src="../static/dist/highchart/highcharts.js"></script>
 
 <script type="text/javascript" src="../static/dist/angular/angular.min.js"></script>
-<!-- <script type="text/javascript" src="../static/dist/countUp/angular-countUp.min.js"></script> -->
 
 <script type="text/javascript" src="../static/js/chartList/chart.js"></script>
 <script type="text/javascript" src="../static/js/chartList/noborderChart.js"></script>
