@@ -91,9 +91,9 @@ function redgreensplineChart(data,xName,yName,lineName,ele){
             //enabled: false,
             //shared: true,
             useHTML: true,
-            headerFormat: '<h3><span style="color:{point.color}">●</span>{series.name}</h3>',
-            pointFormat: '<div>{point.xname}: ' +
-                '<b>{point.y}</b></div>',
+            headerFormat: '',
+            pointFormat: '<div><span style="color:{point.color}">●</span>{point.xname}<br/>' +
+                '<b>{series.name}：{point.y}</b></div>',
             footerFormat: '',
             valueSuffix: ' '
         },
@@ -202,9 +202,9 @@ function blueorangesplineChart(data,xName,yName,lineName,ele){
             //enabled: false,
             //shared: true,
             useHTML: true,
-            headerFormat: '<h3><span style="color:{point.color}">●</span>{series.name}</h3>',
-            pointFormat: '<div>{point.xname}: ' +
-                '<b>{point.y}</b></div>',
+            headerFormat: '',
+            pointFormat: '<div><span style="color:{point.color}">●</span>{point.xname}<br/>' +
+                '<b>{series.name}：{point.y}</b></div>',
             footerFormat: '',
             valueSuffix: ' '
         },

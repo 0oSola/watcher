@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="gb2312">
 	<title>GM监控</title>
+	<script type="text/javascript" src="../static/dist/modernizr/modernizr.js"></script> <!-- Modernizr -->
 	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="../static/dist/font-awesome-4.6.3/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../static/dist/css-loading/circle.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/layout.css">
-	<script type="text/javascript" src="../static/dist/modernizr/modernizr.js"></script> <!-- Modernizr -->
+	
 </head>
 
 <body ng-app="watcher">
-
 	<main class="cd-main-content" >
 		<div class="cd-tab-filter-wrapper banner-box">
 			<div class="cd-tab-filter">
@@ -26,7 +26,7 @@
 				</ul> <!-- cd-filters -->
 			</div> <!-- cd-tab-filter -->
 		</div> <!-- cd-tab-filter-wrapper -->
-		<section class="cd-gallery" box-list>
+		<section class="cd-gallery max-box-limit" box-list>
 			<ul id="watch-list">
 				<li class="mix type-1 type-2 type-3 check1 radio2 option3">
 					<div class="box clock-box" box>

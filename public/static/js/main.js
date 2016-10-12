@@ -1,4 +1,5 @@
 jQuery(document).ready(function($){
+
 	//open/close lateral filter
 	$('.cd-filter-trigger').on('click', function(){
 		triggerFilter(true);
@@ -25,7 +26,7 @@ jQuery(document).ready(function($){
 			
 		//check if user has clicked the placeholder item
 		if( $(event.target).is(filter_tab_placeholder) ) {
-			(filter_tab_placeholder_default_value == filter_tab_placeholder.text()) ? filter_tab_placeholder.text(filter_tab_placeholder_text) : filter_tab_placeholder.text(filter_tab_placeholder_default_value) ;
+			(filter_tab_placeholder_default_value==filter_tab_placeholder.text())?filter_tab_placeholder.text(filter_tab_placeholder_text):filter_tab_placeholder.text(filter_tab_placeholder_default_value);
 			$('.cd-tab-filter').toggleClass('is-open');
 
 		//check if user has clicked a filter already selected  

@@ -14,7 +14,6 @@
 				}).then(function sucessCallback(response){
 					if(response.data.result == 0){
 						var zoneList = response.data.zoneCode;
-						console.log(zoneList);
 						for(i=0;i<zoneList.length;i++){
 							//var tpl = $($('.tpl').html()).addClass('mix')
 							var tpl = $($('.tpl').html()).addClass('mix');
@@ -81,7 +80,7 @@
 								$scope.watch_type = '';
 							break;
 							case 3:
-								$scope.watch_type = '角色库连接监控';
+								$scope.watch_type = '角色库监控';
 							break;
 							case 4:
 								$scope.watch_type = 'ICHARGE监控';
@@ -231,6 +230,7 @@
 								var max_idx = 0;
 								for(i=0;i<data.withTime.length;i++){
 									if(max<data.withTime[i]){
+										console.log(zoneCode+':'+data.withTime[i]);
 										max = data.withTime[i];
 										max_idx = i;
 									}
