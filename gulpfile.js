@@ -19,7 +19,7 @@ var gulp = require('gulp'),
         return gulp.src('public/static/css/*.css')    //需要操作的文件
             .pipe(rename({suffix: '.min'}))   //rename压缩后的文件名
             .pipe(cleanCSS({compatibility: 'ie7'}))   //执行压缩
-            .pipe(gulp.dest('public/static/'));   //输出文件夹
+            .pipe(gulp.dest('public/static/lib/css'));   //输出文件夹
     });
 
     //压缩,合并 js
