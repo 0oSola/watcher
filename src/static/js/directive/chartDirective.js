@@ -1,21 +1,57 @@
 (function(){
 
 	var app = angular.module('chartComponent', []);
-
+	var http_addr = 'http://10.20.72.64:8080';
 	app.directive('boxList',['$http','$compile',function($http,$compile){
 		return {
 			restrict:'A',
 			scope:{},
 			link:function($scope,$ele,$attrs){
+				
+				chart_type=['bc','rgs','gc','bos'];
+				var color_idx = 0;
+				$http({
+					url:http_addr+'/GM_Monitor/QueryMonitorInfoController/QuerMiddle.do?action=interfaceConfig&jsonp=JSON_CALLBACK',
+					method:'JSONP'
+				}).then(function successcallback(response){
+					if(response.data.result==0){
+						actionlist = response.data.ACTION;
+						namelist = response.data.ACTION_NAME;
+						for(var i=0;i<actionlist.length;i++){
+							var tpl = $($('.little-tpl').html()).addClass('mix');
+							if(i==2){
+								console.log(namelist[i]);
+								tpl = $($('.big-tpl').html()).addClass('mix');
+							}
+							if(actionlist[i].indexOf('paysys')>=0){
+								tpl.addClass('type-3');
+							}
+							tpl.find('.title').html(namelist[i].toUpperCase()+'监控');
+							tpl.find('.chart-box').attr('id',actionlist[i]);
+							tpl.find('.main-box').attr('action',actionlist[i]);
+							
+							if(color_idx>3){
+								color_idx = 0;
+							}
+							var color_type = chart_type[color_idx];
+							tpl.find('.main-box').attr('data-color',color_type);
+							color_idx++;
+							tpl = $compile(tpl)($scope);
+							$("#watch-list").mixItUp('append',tpl,{ filter: 'all'});
+						}
+					}
+				},function errorCallback(){
+
+				})
+
 				//获取区服
 				$http({
-					url:'http://10.20.72.64:8080/GM_Monitor/QueryMonitorInfoController/QuerMiddle.do?action=sqlRole&jsonp=JSON_CALLBACK',
+					url:http_addr+'/GM_Monitor/QueryMonitorInfoController/QuerMiddle.do?action=sqlRole&jsonp=JSON_CALLBACK',
 					method:'JSONP'
 				}).then(function sucessCallback(response){
 					if(response.data.result == 0){
 						var zoneList = response.data.zoneCode;
 						for(i=0;i<zoneList.length;i++){
-							//var tpl = $($('.tpl').html()).addClass('mix')
 							var tpl = $($('.tpl').html()).addClass('mix');
 							tpl.find('.chart-box').attr('id',zoneList[i]);
 							tpl.find('.main-box').attr('data-zone',zoneList[i]);
@@ -29,6 +65,7 @@
 				},function error(){
 
 				})
+
 				$ele.find('ul').mixItUp({
 				    controls: {
 				    	enable: false
@@ -54,7 +91,7 @@
 			controller:['$scope','$http',function($scope,$http){
 				this.QuerMiddle = function(type){
 					return $http({
-						url:'http://10.20.72.64:8080/GM_Monitor/QueryMonitorInfoController/QuerMiddle.do?action='+type+'&jsonp=JSON_CALLBACK',
+						url:http_addr+'/GM_Monitor/QueryMonitorInfoController/QuerMiddle.do?action='+type+'&jsonp=JSON_CALLBACK',
 						method:'JSONP'
 					})
 				};
@@ -64,7 +101,7 @@
 				//角色库
 				this.getRoleData = function(type,zoneCode){
 					return $http({
-						url:'http://10.20.72.64:8080/GM_Monitor/QueryMonitorInfoController/QuerMiddle.do?action='+type+'&zoneCode='+zoneCode+'&jsonp=JSON_CALLBACK',
+						url:http_addr+'/GM_Monitor/QueryMonitorInfoController/QuerMiddle.do?action='+type+'&zoneCode='+zoneCode+'&jsonp=JSON_CALLBACK',
 						method:'JSONP'
 					})
 				}
@@ -73,21 +110,21 @@
 					createChart:function(target_id,chartType,date,withTime,status,action_type,type){
 						var chart_data = [];
 						switch(parseInt(type)){
-							case 1:
+							/*case 1:
 								$scope.watch_type = '增值服务监控';
 							break;
 							case 2:
 								$scope.watch_type = '';
-							break;
+							break;*/
 							case 3:
 								$scope.watch_type = '角色库监控';
 							break;
-							case 4:
+							/*case 4:
 								$scope.watch_type = 'ICHARGE监控';
 							break;
 							case 5:
 								$scope.watch_type = 'PAYSYS监控';
-							break;
+							break;*/
 						}
 						for(i=0;i<date.length;i++){
 							if(status[i]==1){
@@ -154,51 +191,53 @@
 			scope:true,
 			require:'?^box',
 			link:function(scope, iElement, iAttrs,pctrl){
-
 				function getData(){
 					var action_type = iAttrs.action;
-					pctrl.QuerMiddle(action_type).then(function successCallback(response){
-						if(response.data.result==0){
-							var id = iElement.find('.chart-box').attr('id');
-							iElement.find('.loading').css('display','none');
-							var data = response.data;
-							data = angular.fromJson(data);
-							
-							var max = data.withTime[0];
-							var max_idx = 0;
-							for(i=0;i<data.withTime.length;i++){
-								if(max<data.withTime[i]){
-									max = data.withTime[i];
-									max_idx = i;
+					if(action_type!=''){
+						pctrl.QuerMiddle(action_type).then(function successCallback(response){
+							if(response.data.result==0){
+								var id = iElement.find('.chart-box').attr('id');
+								iElement.find('.loading').css('display','none');
+								var data = response.data;
+								data = angular.fromJson(data);
+								
+								var max = data.withTime[0];
+								var max_idx = 0;
+								for(i=0;i<data.withTime.length;i++){
+									if(max<data.withTime[i]){
+										max = data.withTime[i];
+										max_idx = i;
+									}
 								}
-							}
-							scope.action_type = response.data.action_type;
-							var max_timer = data.setDate[max_idx];
-							scope.max_timer = '最高延迟时间点:'+max_timer.substring(max_timer.indexOf('-')+1,max_timer.length-3);
-							scope.max = max.toFixed(2);
+								scope.action_type = response.data.action_type;
+								var max_timer = data.setDate[max_idx];
+								scope.max_timer = '最高延迟时间点:'+max_timer.substring(max_timer.indexOf('-')+1,max_timer.length-3);
+								scope.max = max.toFixed(2);
 
-							var colorChart = 'redgreensplineChart';
-							if(iAttrs.color=='bos'){
-								colorChart = 'blueorangesplineChart';
-							}else if(iAttrs.color=='rgs'){
-								colorChart = 'redgreensplineChart';
-							}else if(iAttrs.color=='gc'){
-								colorChart = 'greencolumnChart';
-							}else if(iAttrs.color=='bc'){
-								colorChart = 'bluecolumnChart';
-							}
+								var colorChart = 'redgreensplineChart';
+								if(iAttrs.color=='bos'){
+									colorChart = 'blueorangesplineChart';
+								}else if(iAttrs.color=='rgs'){
+									colorChart = 'redgreensplineChart';
+								}else if(iAttrs.color=='gc'){
+									colorChart = 'greencolumnChart';
+								}else if(iAttrs.color=='bc'){
+									colorChart = 'bluecolumnChart';
+								}
 
-							pctrl.builder.createChart(id,colorChart,data.setDate,data.withTime,data.status,data.action_type,data.type);
-							scope.watch_type = pctrl.getWatch_type();
-						}else{
-							iElement.find('.error-msg').text(response.data.message);
-							$timeout(function() {
-								getData();
-							}, 60000);
-						}
-					},function errorCallBack(response){
-						iElement.find('.error-msg').text("连接不上服务器,请联系管理员");
-					})
+								pctrl.builder.createChart(id,colorChart,data.setDate,data.withTime,data.status,data.action_type,data.type);
+								scope.watch_type = pctrl.getWatch_type();
+							}else{
+								iElement.find('.error-msg').text(response.data.message);
+								$timeout(function() {
+									getData();
+								}, 60000);
+							}
+						},function errorCallBack(response){
+							iElement.find('.error-msg').text("连接不上服务器,请联系管理员");
+						})
+					}
+					
 				}
 				getData();
 				$interval(function() {
@@ -315,4 +354,5 @@
 			}
 		};
 	}])
+
 })()

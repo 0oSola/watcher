@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="gb2312">
+	<meta charset="utf-8">
 	<title>GM监控</title>
 	<script type="text/javascript" src="../static/dist/modernizr/modernizr.js"></script> <!-- Modernizr -->
 	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
@@ -10,7 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="../static/css/layout.css">
 	
 </head>
-
 <body ng-app="watcher">
 	<main class="cd-main-content" >
 		<div class="cd-tab-filter-wrapper banner-box">
@@ -34,7 +33,7 @@
 					</div>
 				</li>
 
-				<li class="mix type-1 check1 radio2 option3">
+				<!-- <li class="mix type-1 check1 radio2 option3">
 					<div class="box" box>
 						
 						<div class="main-box" chart-box action="middle" data-color="bc">
@@ -88,11 +87,11 @@
 								<span class="num-font m-size" ng-bind="max"></span>
 								<div class="max-date" ng-bind="max_timer"></div>
 							</div>
-
+				
 							<div class="chart-box data-box no-axias column-box small-box" id="icharge"></div>
 						</div>
 					</div>
-				</li>
+				</li> -->
 				
 				<!-- <li class="mix type-1 check3 radio2 option4">
 					<div class="box bar-box" box>
@@ -219,6 +218,52 @@
 				<li class="gap"></li>
 				<li class="gap"></li>
 			</ul>
+
+			<ul class="big-tpl" style="display:none">
+				<li class="mix type-1 check3 radio3 option1">
+					<div class="box bar-box" box>
+						<div class="main-box" chart-box action="" data-color="gc">
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="tip"><i class="error-font">●</i> 为异常点</div>
+							<div class="detail">
+							<!-- ng-bind="watch_type" -->
+								<div class="title"></div>
+								<div class="little-title" ng-bind="action_type | uppercase"></div>
+							</div>
+							<div class="main-msg">
+								<span class="msg-title">最高延迟(秒)</span>
+								<span class="num-font m-size" ng-bind="max"></span>
+								<div class="max-date" ng-bind="max_timer"></div>
+							</div>
+
+							<div class="chart-box data-box no-axias column-box small-box" id=""></div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<ul class="little-tpl" style="display:none">
+				<li class="mix type-1 check1 radio2 option3">
+					<div class="box" box>
+						
+						<div class="main-box" chart-box action="" data-color="bc">
+							<loading-wrap class="loading"></loading-wrap>
+							<div class="tip"><i class="error-font">●</i> 为异常点</div>
+							<div class="detail">
+								<div class="title"></div>
+								<div class="little-title" ng-bind="action_type | uppercase"></div>
+							</div>
+							<div class="left-double-box">
+								<div class="main-msg">
+									<p class="msg-title">最高延迟(秒)</p>
+									<p class="num-font s-size" ng-bind="max"></p>
+								</div>
+								<div class="chart-box" id="middle"></div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+
 			<ul class="tpl" style="display:none">
 				<li class="type-2 check2 radio2 option4">
 					<div class="box bar-box" box>
@@ -250,7 +295,6 @@
 
 <script type="text/javascript" src="../static/dist/angular/angular.min.js"></script>
 
-<script type="text/javascript" src="../static/js/chartList/chart.js"></script>
 <script type="text/javascript" src="../static/js/chartList/noborderChart.js"></script>
 <script type="text/javascript" src="../static/js/app.js"></script>
 

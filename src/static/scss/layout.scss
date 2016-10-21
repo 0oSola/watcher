@@ -176,6 +176,9 @@ Main Components
   left: 0;
   width: 100%;
 }
+.cd-gallery {
+  padding-top: 76px;
+}
 .cd-main-content.is-fixed .cd-gallery {
   padding-top: 76px;
 }
@@ -764,7 +767,6 @@ body{
   position: relative;
   overflow: hidden;
 	float:left;
-	background: url(../static/images/img-1.jpg);
 	background: #ebedec;
 	background: #fff;
 	width:100%;
@@ -1205,3 +1207,13 @@ border-width: 1px; */
     display: none;
   }
 }   
+
+.max-box-limit{
+  /* max-width: 1500px;
+  top: 30px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  margin:0 auto; */
+}

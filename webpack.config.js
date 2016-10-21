@@ -1,13 +1,13 @@
 var webpack = require('webpack');
 var path = require('path');
-var buildPath = path.resolve(__dirname, 'build');
+var buildPath = path.resolve(__dirname, './public/build');
 var config = {
   //入口文件
   entry: {
     //路径./开头
     index:'./public/static/index.js'
   },
-  extensions: ['', '.js', '.json', '.css', '.less'],
+  extensions: ['', '.js', '.json', '.css', '.less','.svg','.ttf','.otf'],
   output: {
     path: buildPath,    //编译后的文件路径
     filename: 'app.js'
@@ -20,6 +20,7 @@ var config = {
       { test: /\.less$/,
           loader: 'style-loader!css-loader!less-loader'
       },
+      {test: /\.(svg|ttf|otf)$/,loader:'file-loader?name=../urlfile/[name]-[hash].[ext]'},
       //.js 文件使用 babel 来编译处理
       { test: /\.js$/, loader: 'babel' },
       //图片文件使用 url-loader 来处理，小于8kb的直接转为base64
