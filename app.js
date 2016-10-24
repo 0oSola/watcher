@@ -16,7 +16,7 @@
 	//new add 指定类型
 	app.use(bodyParser.json());
 
-	app.use(express.static('./public'));
+	app.use(express.static('./'));
 	app.use(morgan('dev'));
 
 	app.listen(process.env.PORT || 3000);

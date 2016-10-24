@@ -3,7 +3,7 @@
 	.directive('clock', ['$interval','$timeout',function ($interval,$timeout) {
 		return {
 			restrict: 'AE',
-			templateUrl:'../../../templates/clock.html',
+			templateUrl:'../pages/templates/clock.html',
 			controller:function ($scope) {
 				$scope.timer = {
 					year:"111",

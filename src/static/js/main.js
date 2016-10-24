@@ -49,7 +49,7 @@ jQuery(document).ready(function($){
 	//close filter dropdown inside lateral .cd-filter 
 	$('.cd-filter-block h4').on('click', function(){
 		$(this).toggleClass('closed').siblings('.cd-filter-content').slideToggle(300);
-	})
+	});
 
 	//fix lateral filter and gallery on scrolling
 	$(window).on('scroll', function(){
